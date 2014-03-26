@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+	<Spinner
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/spinner"
+			android:spinnerMode="dropdown"
+			android:minWidth="100dp"
+			/>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Bid"
+			android:id="@+id/tvBid"
+			android:gravity="center_vertical"
+			android:layout_below="@+id/spinner"
+			android:padding="10dp"/>
+
+	<EditText
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/etBid"
+			android:layout_toRightOf="@+id/tvBid"
+			android:layout_alignTop="@+id/tvBid"
+			android:layout_alignBottom="@+id/tvBid"
+			android:inputType="number"
+			android:layout_marginLeft="5dp"
+			android:minWidth="40dp"/>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Score"
+			android:id="@+id/tvScore"
+			android:layout_below="@+id/tvBid"
+			android:layout_alignParentLeft="true"
+			android:padding="10dp"/>
+
+	<EditText
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/etScore"
+			android:inputType="number"
+			android:layout_below="@+id/etBid"
+			android:layout_toRightOf="@+id/tvScore"
+			android:layout_alignBottom="@+id/tvScore"
+			android:minWidth="40dp"/>
+
+</RelativeLayout>

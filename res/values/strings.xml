@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_name">Blades</string>
+	<string name="text_1">Team 1</string>
+	<string name="text_2">Team 2</string>
+	<string name="ptext_1">Player 1</string>
+	<string name="ptext_2">Player 2</string>
+	<string name="ptext_3">Player 3</string>
+	<string name="ptext_4">Player 4</string>
+	<string name="set_team_button">Set Team</string>
+	<string name="BID">Bid</string>
+	<string name="score_button">Score</string>
+	<string name="net">net</string>
+
+</resources>

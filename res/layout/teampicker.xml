@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/team1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/text_1" />
+
+    <TextView
+        android:id="@+id/team2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/text_2" />
+
+    <EditText
+        android:id="@+id/player1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/team1"
+        android:ems="10"
+        android:hint="@string/ptext_1"
+        android:nextFocusRight="@+id/player2"
+        android:singleLine="true"
+        android:text=""/>
+
+    <EditText
+        android:id="@+id/player2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/team2"
+        android:layout_below="@id/team2"
+        android:ems="10"
+        android:hint="@string/ptext_2"
+        android:singleLine="true"
+        android:text="">
+    </EditText>
+
+    <EditText
+        android:id="@+id/player3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/team1"
+        android:layout_below="@+id/player1"
+        android:ems="10"
+        android:hint="@string/ptext_3"
+        android:singleLine="true"
+        android:text=""/>
+
+    <EditText
+        android:id="@+id/player4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/team2"
+        android:layout_below="@+id/player2"
+        android:ems="10"
+        android:hint="@string/ptext_4"
+        android:singleLine="true"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/set_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-25dip"
+        android:text="@string/set_team_button" />
+
+</RelativeLayout>
