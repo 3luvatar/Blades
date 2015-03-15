@@ -32,7 +32,7 @@ public class Player implements Serializable {
 		return Name;
 	}
 
-	public String getAverage() {
+	public String getStats() {
 		if (game.getRounds().isEmpty()) return "";
 		double averageBid = 0;
 		double averageScore = 0;
@@ -40,12 +40,13 @@ public class Player implements Serializable {
 		for (Round round : game.getRounds()) {
 			averageScore += round.getPlayerHand(playerNumber).getScore();
 			averageBid += round.getPlayerHand(playerNumber).getBid();
-			if (!round.isFinished()){
+			if (!round.isFinished()) {
 				scoreCountOffset++;
 			}
 		}
 		averageBid = averageBid / game.getRounds().size();
 		averageScore = averageScore / (game.getRounds().size() - scoreCountOffset);
-		return String.format("Bid: %.2f  Score: %.2f, ", averageBid, averageScore);
+		return String.format("Bid: %.2f  Score: %.2f, Ratio: %.2f", averageBid, averageScore,
+				averageScore / averageBid);
 	}
 }

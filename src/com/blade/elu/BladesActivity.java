@@ -1,6 +1,5 @@
 package com.blade.elu;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -142,10 +141,10 @@ public class BladesActivity extends FragmentActivity {
 			public View getView(int position, View convertView, ViewGroup parent) {
 				convertView = getLayoutInflater().inflate(R.layout.player_layout, parent, false);
 				TextView playerName = (TextView) convertView.findViewById(R.id.playerName);
-				TextView playerAverage = (TextView) convertView.findViewById(R.id.playerAverageBid);
+				TextView playerStats = (TextView) convertView.findViewById(R.id.playerStats);
 				Player player = getItem(position);
 				playerName.setText(player.getName());
-				playerAverage.setText(player.getAverage());
+				playerStats.setText(player.getStats());
 				return convertView;
 			}
 		};
