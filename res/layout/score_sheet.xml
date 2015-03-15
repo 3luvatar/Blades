@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/content_frame"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 
 	<RelativeLayout
 			android:layout_width="fill_parent"
@@ -31,11 +33,12 @@
 				android:textSize="@dimen/text_size"
 				android:layout_toLeftOf="@+id/divider"/>
 
-		<View android:layout_width="80dp"
-		      android:layout_height="0dp"
-		      android:layout_alignWithParentIfMissing="false"
-		      android:layout_centerHorizontal="true"
-		      android:id="@+id/divider"/>
+		<View
+				android:layout_width="80dp"
+				android:layout_height="0dp"
+				android:layout_alignWithParentIfMissing="false"
+				android:layout_centerHorizontal="true"
+				android:id="@+id/divider"/>
 
 		<TextView
 				android:id="@+id/player2"
@@ -58,9 +61,11 @@
 				android:layout_alignParentRight="true"/>
 	</RelativeLayout>
 
-	<View android:layout_width="match_parent"
-	      android:layout_height="1dp"
-	      android:background="@android:color/background_light"/>
+	<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="@android:color/background_light"/>
+
 	<ListView
 			android:id="@+id/rowContainer"
 			android:layout_width="match_parent"
@@ -73,28 +78,34 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:baselineAligned="false">
+
 		<LinearLayout
 				android:orientation="horizontal"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="center"
 				android:layout_weight="1">
+
 			<NumberPicker
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:id="@+id/player1Picker"
 					/>
+
 			<View
 					android:layout_height="0dp"
 					android:layout_width="0dp"
 					android:layout_gravity="center"
 					android:layout_weight="1"/>
-			<NumberPicker android:layout_width="wrap_content"
-			              android:layout_height="wrap_content"
-			              android:id="@+id/player3Picker"
-			              android:measureWithLargestChild="false"
-			              android:baselineAligned="false"/>
+
+			<NumberPicker
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/player3Picker"
+					android:measureWithLargestChild="false"
+					android:baselineAligned="false"/>
 		</LinearLayout>
+
 		<LinearLayout
 				android:orientation="vertical"
 				android:layout_width="wrap_content"
@@ -106,6 +117,7 @@
 					android:layout_height="wrap_content"
 					android:text="bags"
 					android:id="@+id/quickBags"/>
+
 			<Button
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -113,24 +125,31 @@
 					android:id="@+id/buttonDo"
 					android:layout_gravity="center"/>
 		</LinearLayout>
+
 		<LinearLayout
 				android:orientation="horizontal"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:gravity="center"
 				android:layout_weight="1">
-			<NumberPicker android:layout_width="wrap_content"
-			              android:layout_height="wrap_content"
-			              android:id="@+id/player2Picker"
-			              android:measureWithLargestChild="false"
-			              android:baselineAligned="false"/>
-			<View android:layout_width="0dp"
-			      android:layout_height="0dp"
-			      android:layout_gravity="center"
-			      android:layout_weight="1"/>
-			<NumberPicker android:layout_width="wrap_content"
-			              android:layout_height="wrap_content"
-			              android:id="@+id/player4Picker"
+
+			<NumberPicker
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/player2Picker"
+					android:measureWithLargestChild="false"
+					android:baselineAligned="false"/>
+
+			<View
+					android:layout_width="0dp"
+					android:layout_height="0dp"
+					android:layout_gravity="center"
+					android:layout_weight="1"/>
+
+			<NumberPicker
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/player4Picker"
 					/>
 		</LinearLayout>
 	</LinearLayout>

@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.HashMap;
+import com.blade.elu.entities.Game;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,13 +20,13 @@ public class TeamSetup extends Activity {
 		Button btTeamSet = (Button) findViewById(R.id.set_team);
 		btTeamSet.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				HashMap<String, String> players = new HashMap<String, String>();
-				players.put("p1", ((EditText) findViewById(R.id.player1)).getText().toString());
-				players.put("p2", ((EditText) findViewById(R.id.player2)).getText().toString());
-				players.put("p3", ((EditText) findViewById(R.id.player3)).getText().toString());
-				players.put("p4", ((EditText) findViewById(R.id.player4)).getText().toString());
+				Game game = new Game();
+				game.getPlayer1().setName(((EditText) findViewById(R.id.player1)).getText().toString());
+				game.getPlayer2().setName(((EditText) findViewById(R.id.player2)).getText().toString());
+				game.getPlayer3().setName(((EditText) findViewById(R.id.player3)).getText().toString());
+				game.getPlayer4().setName(((EditText) findViewById(R.id.player4)).getText().toString());
 				Intent i = new Intent(TeamSetup.this, BladesActivity.class);
-				i.putExtra("players", players);
+				i.putExtra("game", game);
 				startActivity(i);
 				finish();
 			}

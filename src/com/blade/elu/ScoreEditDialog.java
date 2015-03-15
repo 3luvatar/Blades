@@ -9,6 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.blade.elu.entities.Game;
+import com.blade.elu.entities.HandScore;
+import com.blade.elu.entities.Player;
+import com.blade.elu.entities.Round;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,20 +26,18 @@ import java.util.Map;
 public class ScoreEditDialog extends DialogFragment {
 	EditText etScore;
 	EditText etBid;
-	private int bid;
-	//    private int score;
 	private Round round;
+	private Game game;
 	private Spinner spPlayer;
-	private ArrayAdapter<String> adapter;
-	private String[] playerArray = new String[4];
+	private ArrayAdapter<Player> adapter;
 	private DialogListener listener;
 	private View v;
 
-	static ScoreEditDialog newInstance(Round round, HashMap<String, String> players) {
+	static ScoreEditDialog newInstance(Round round, Game game) {
 		ScoreEditDialog dialog = new ScoreEditDialog();
 		Bundle args = new Bundle();
 		args.putSerializable("round", round);
-		args.putSerializable("players", players);
+		args.putSerializable("game", game);
 		dialog.setArguments(args);
 		return dialog;
 	}
@@ -43,17 +45,15 @@ public class ScoreEditDialog extends DialogFragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		round = (Round) getArguments().getSerializable("round");
-		HashMap<String, String> players = (HashMap<String, String>) getArguments().getSerializable("players");
-		playerArray[0] = players.get("p1");
-		playerArray[1] = players.get("p2");
-		playerArray[2] = players.get("p3");
-		playerArray[3] = players.get("p4");
-		adapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), R.layout.spinner_item,
-				playerArray);
+		game = (Game) getArguments().getSerializable("game");
+
+		adapter = new ArrayAdapter<Player>(getActivity().getApplicationContext(), R.layout.spinner_item,
+				game.getPlayers());
 
 		v = View.inflate(getActivity(), R.layout.score_edit_dialog, null);
 		etBid = (EditText) v.findViewById(R.id.etBid);
-        etScore = (EditText) v.findViewById(R.id.etScore);
+		etScore = (EditText) v.findViewById(R.id.etScore);
+		etScore.setEnabled(round.isFinished());
 		spPlayer = (Spinner) v.findViewById(R.id.spinner);
 
 
@@ -61,9 +61,9 @@ public class ScoreEditDialog extends DialogFragment {
 		spPlayer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				Map<String, Integer> player = round.getPlayer(position + 1);
-				etBid.setText(String.valueOf(player.get("bid")));
-                etScore.setText(String.valueOf(player.get("score")));
+				HandScore handScore = round.getPlayerHand(position + 1);
+				etBid.setText(String.valueOf(handScore.getBid()));
+				etScore.setText(String.valueOf(handScore.getScore()));
 			}
 
 			@Override
@@ -86,9 +86,11 @@ public class ScoreEditDialog extends DialogFragment {
 				d.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						round.setPlayer(spPlayer.getSelectedItemPosition() + 1, Integer.valueOf(etBid.getText().toString()),
-								Integer.valueOf(etScore.getText().toString()));
-						if (round.isCalculated() && !round.isScoreValid()) {
+						Player player = (Player) spPlayer.getSelectedItem();
+						HandScore handScore = round.getPlayerHand(player);
+						handScore.setBid(Integer.valueOf(etBid.getText().toString()));
+						handScore.setScore(Integer.valueOf(etScore.getText().toString()));
+						if (round.isFinished() && !round.isScoreValid()) {
 							Toast.makeText(getActivity(), "error score not valid", Toast.LENGTH_SHORT).show();
 							return;
 						}
