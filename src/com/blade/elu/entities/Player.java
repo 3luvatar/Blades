@@ -39,7 +39,7 @@ public class Player implements Serializable {
 		int scoreCountOffset = 0;
 		for (Round round : game.getRounds()) {
 			averageScore += round.getPlayerHand(playerNumber).getScore();
-			averageBid += round.getPlayerHand(playerNumber).getBid();
+			averageBid += Math.max(round.getPlayerHand(playerNumber).getBid(), 0);
 			if (!round.isFinished()) {
 				scoreCountOffset++;
 			}
